@@ -1,9 +1,9 @@
 <template>
     <div class="page-product">
-        <div class="columns is-multiline">
-            <div class="column mb-9">
-                <figure class="image mb-6">
-                    <img v-bind:src="product.get_image">                    
+        <div class="columns is-multiline is-centered">
+            <div class="column is-half">
+                <figure class="is-256x256">
+                    <img class="is-rounded" v-bind:src="product.get_image">                    
                 </figure>
 
                 <h1 class="title">{{ product.name }}</h1>
@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="control">
-                        <a class="button is-dark">Add to cart</a>
+                        <a class="button is-dark" @click="addToCart">Add to cart</a>
                     </div>
                 </div>
             </div>            
@@ -57,6 +57,18 @@ export default {
                 .catch(error => {
                     console.log(error)
                 })
+        },
+        addToCart() {
+            if (isNaN(this.quantity) || this.quantity < 1) {
+                this.quantity = 1
+            }
+
+            const item = {
+                product: this.product,
+                quantity: this.quantity
+            }
+
+            this.$store.commit('addToCart', item)
         }
     }
 }

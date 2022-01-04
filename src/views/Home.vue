@@ -6,7 +6,7 @@
           Welcome to Knitting Store!
         </p>
         <p class="subtitle">
-          Handmade knitwear brand.
+          Handmade knitwear brand
         </p>
       </div>
     </section>
