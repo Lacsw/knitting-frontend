@@ -56,6 +56,8 @@ export default {
                 .get(`/api/v1/product/${category_slug}/${product_slug}`)
                 .then(response => {
                     this.product = response.data
+
+                    document.title = this.product.name + ' | Knitting Store'
                 })
                 .catch(error => {
                     console.log(error)
